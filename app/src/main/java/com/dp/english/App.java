@@ -3,18 +3,19 @@ package com.dp.english;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
-import com.dp.english.model.Database;
+
+import com.dp.english.model.MyDatabase;
 
 public class App extends Application {
     public static App instance;
 
-    private Database userDatabase;
+    private MyDatabase userDatabase;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        userDatabase = Room.databaseBuilder(this, Database.class, "database")
+        userDatabase = Room.databaseBuilder(this, MyDatabase.class, "database")
                 .allowMainThreadQueries()
                 .build();
     }
@@ -23,7 +24,7 @@ public class App extends Application {
         return instance;
     }
 
-    public Database getUserDatabase() {
+    public MyDatabase getUserDatabase() {
         return userDatabase;
     }
 }
