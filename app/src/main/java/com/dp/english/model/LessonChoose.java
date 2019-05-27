@@ -1,19 +1,28 @@
 package com.dp.english.model;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.dp.english.App;
 import com.dp.english.R;
 import com.dp.english.model.adapter.LessonsApater;
+import com.dp.english.presenter.MainActivity;
+import com.dp.english.presenter.UserHello;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class LessonChoose extends AppCompatActivity {
-private RecyclerView lessonList;
-private LessonsApater apater;
+    private RecyclerView lessonList;
+    private LessonsApater apater;
+    private Button takeLesson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,27 +31,55 @@ private LessonsApater apater;
         lessonList = findViewById(R.id.rv_lesson_list);
 
         showLessons();
+
     }
-    private void insertData(){
+
+    private void insertData() {
         MyDatabase db = App.getInstance().getUserDatabase();
         LessonDao lessonDao = db.getLessonDao();
         Lesson lesson = new Lesson();
         lesson.setId(1);
-        lesson.setNameFile("ten_Rules.png");
+        lesson.setNameFile("ten_Rules.pdf");
         lesson.setNameLesson("10 основных правил");
         lesson.setLevel(Level.EASY);
         lessonDao.insert(lesson);
     }
+    private void delete(){
+        MyDatabase db = App.getInstance().getUserDatabase();
+        LessonDao lessonDao = db.getLessonDao();
+        lessonDao.delete(lessonDao.getLessonById(1));
+    }
 
-    private List<Lesson> getLessons(){
+    private List<Lesson> getLessons() {
         MyDatabase db = App.getInstance().getUserDatabase();
         LessonDao lessonDao = db.getLessonDao();
         List<Lesson> list = lessonDao.getLessons();
         return list;
     }
-    private void showLessons(){
+
+    private Lesson getLesson(int id) {
+        MyDatabase db = App.getInstance().getUserDatabase();
+        LessonDao lessonDao = db.getLessonDao();
+        Lesson lesson = lessonDao.getLessonById(id);
+        return lesson;
+    }
+
+    private void showLessons() {
         lessonList.setLayoutManager(new LinearLayoutManager(this));
-        apater = new LessonsApater(getLessons());
+        apater = new LessonsApater(getLessons(), new LessonsApater.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Lesson item = apater.getItem(position);
+
+                if (item != null) {
+                    Intent i = new Intent(LessonChoose.this, TakeLesson.class);
+                    i.putExtra("lesson",  item.getId());
+                    startActivity(i);
+                    finish();
+                }
+                else Toast.makeText(LessonChoose.this, "No lessons", Toast.LENGTH_SHORT).show();
+            }
+        });
         lessonList.setAdapter(apater);
     }
 }

@@ -15,6 +15,12 @@ public interface LessonDao {
     @Query("Select * from Lesson")
     List<Lesson> getLessons();
 
+    @Query("Select * from Lesson where nameLesson = :name")
+    Lesson getLesson(String name);
+
+    @Query("Select * from Lesson where id = :id")
+    Lesson getLessonById(int id);
+
     @Insert
     void insert(Lesson lesson);
 
