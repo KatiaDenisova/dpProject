@@ -22,6 +22,10 @@ public class Lesson {
 
     public Level level;
 
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
     public Lesson() {
     }
 

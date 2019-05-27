@@ -19,7 +19,7 @@ public class ChooseLevel extends AppCompatActivity {
         takeLesson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChooseLevel.this, TakeLesson.class));
+                startActivity(new Intent(ChooseLevel.this, LessonChoose.class));
                 finish();
             }
         });
