@@ -2,9 +2,15 @@ package com.dp.english.model;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 
-@Database(entities = {User.class , Answer.class}, version = 2, exportSchema = false)
+import com.dp.english.model.convert.ConvertLevel;
+
+@TypeConverters(ConvertLevel.class)
+@Database(entities = {User.class , Answer.class, Lesson.class}, version = 2, exportSchema = false)
 public abstract class MyDatabase extends RoomDatabase {
     public abstract UserDao getUserDao();
+    public abstract LessonDao getLessonDao();
     public abstract AnswerDao getAnswerDao();
+
 }

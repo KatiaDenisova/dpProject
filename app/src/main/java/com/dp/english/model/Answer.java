@@ -15,12 +15,9 @@ public class Answer {
 
     @ColumnInfo(name = "question_id")
     private int questionId;
-    
 
-    public Answer(int id, String theAnswer, int questionId) {
-        this.id = id;
-        this.theAnswer = theAnswer;
-        this.questionId = questionId;
+
+    public Answer() {
     }
 
     public int getId() {
