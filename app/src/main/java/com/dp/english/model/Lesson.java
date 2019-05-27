@@ -1,8 +1,11 @@
 package com.dp.english.model;
 
+import android.arch.persistence.room.Entity;
+
+
 public class Lesson {
     private int id;
-    private String lessonName;
-    private String theory;
-    private Test test;
+    private String nameLesson;
+    private String nameFile;
+    private Level level;
 }
