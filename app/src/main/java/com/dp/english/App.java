@@ -16,6 +16,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         userDatabase = Room.databaseBuilder(this, MyDatabase.class, "database")
+                .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
     }
