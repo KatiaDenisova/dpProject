@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent i = new Intent(MainActivity.this,UserHello.class );
                                 i.putExtra("User",user);
                                 startActivity(i);
-                                finish();
+
                             }
                             else {
                                 Toast.makeText(MainActivity.this, "Unregistered user, or incorrect", Toast.LENGTH_SHORT).show();

@@ -30,6 +30,9 @@ public interface LessonDao {
     @Delete
     void delete(Lesson lesson);
 
+    @Delete
+    void deleteList(List<Lesson> list);
+
     @Update
     void update(Lesson lesson);
 

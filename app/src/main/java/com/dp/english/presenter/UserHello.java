@@ -30,7 +30,7 @@ public class UserHello extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserHello.this, ChooseLevel.class));
-                finish();
+
             }
         });
     }

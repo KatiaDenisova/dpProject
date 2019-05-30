@@ -9,17 +9,21 @@ import android.arch.persistence.room.TypeConverters;
 
 import com.dp.english.model.convert.ConvertLevel;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
 @TypeConverters(ConvertLevel.class)
 @Entity
-
+@Root
 public class Lesson {
     @PrimaryKey
+    @Element
     private int id;
+    @Element
     private String nameLesson;
+    @Element
     private String nameFile;
-
-
-
+    @Element
     public Level level;
 
     public void setLevel(Level level) {

@@ -29,9 +29,11 @@ public class LessonChoose extends AppCompatActivity {
         setContentView(R.layout.activity_lesson_choose);
 
         lessonList = findViewById(R.id.rv_lesson_list);
-
+        MyDatabase db = App.getInstance().getUserDatabase();
+        LessonDao lessonDao = db.getLessonDao();
+//        lessonDao.deleteList(lessonDao.getLessons());
+//     insertData();
         showLessons();
-
     }
 
     private void insertData() {
@@ -43,6 +45,13 @@ public class LessonChoose extends AppCompatActivity {
         lesson.setNameLesson("10 основных правил");
         lesson.setLevel(Level.EASY);
         lessonDao.insert(lesson);
+        Lesson lesson1 = new Lesson();
+        lesson1.setId(2);
+        lesson1.setNameFile("present_continuous.pdf");
+        lesson1.setNameLesson("Present Continuous");
+        lesson1.setLevel(Level.EASY);
+        lessonDao.insert(lesson1);
+
     }
     private void delete(){
         MyDatabase db = App.getInstance().getUserDatabase();
@@ -75,7 +84,7 @@ public class LessonChoose extends AppCompatActivity {
                     Intent i = new Intent(LessonChoose.this, TakeLesson.class);
                     i.putExtra("lesson",  item.getId());
                     startActivity(i);
-                    finish();
+
                 }
                 else Toast.makeText(LessonChoose.this, "No lessons", Toast.LENGTH_SHORT).show();
             }
