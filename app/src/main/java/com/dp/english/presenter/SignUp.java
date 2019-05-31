@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.dp.english.App;
 import com.dp.english.R;
+import com.dp.english.model.ChooseLevel;
 import com.dp.english.model.MyDatabase;
 import com.dp.english.model.User;
 import com.dp.english.model.UserDao;
@@ -68,7 +69,7 @@ public class SignUp extends AppCompatActivity {
                             User user = new User(edtName.getText().toString(), edtEmail.getText().toString(),edtPassword.getText().toString());
                             userDao.insert(user);
                             progressDialog.dismiss();
-                            Intent i = new Intent(SignUp.this,UserHello.class );
+                            Intent i = new Intent(SignUp.this, ChooseLevel.class );
                             i.putExtra("User",user);
                             startActivity(i);
                             finish();

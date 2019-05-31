@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.dp.english.App;
 import com.dp.english.R;
+import com.dp.english.model.ChooseLevel;
 import com.dp.english.model.MyDatabase;
 import com.dp.english.model.User;
 import com.dp.english.model.UserDao;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         public void run() {
                             User user = userDao.getUser(edtEmail.getText().toString(),edtPassword.getText().toString());
                             if(user!=null) {
-                                Intent i = new Intent(MainActivity.this,UserHello.class );
+                                Intent i = new Intent(MainActivity.this, ChooseLevel.class );
                                 i.putExtra("User",user);
                                 startActivity(i);
 

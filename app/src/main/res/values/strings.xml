@@ -5,12 +5,11 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="cancel">Cancel</string>
-    <string name="hello">Hello</string>
-    <string name="check_level">Check Level</string>
-    <string name="choose_level">Choose Level</string>
-    <string name="choose_your_level">Choose your level</string>
-    <string name="difficult_level">Difficult Level</string>
-    <string name="average_level">Average Level</string>
-    <string name="easy_level">Easy Level</string>
+    <string name="hello">Привет</string>
+    <string name="choose_level">Выбрать</string>
+    <string name="choose_your_level">Выбери свой уровень</string>
+    <string name="difficult_level">Сложный</string>
+    <string name="average_level">Средний</string>
+    <string name="easy_level">Легкий</string>
     <string name="understandably">Понятно</string>
 </resources>

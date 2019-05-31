@@ -13,7 +13,6 @@ import com.dp.english.App;
 import com.dp.english.R;
 import com.dp.english.model.adapter.LessonsApater;
 import com.dp.english.presenter.MainActivity;
-import com.dp.english.presenter.UserHello;
 
 import java.io.Serializable;
 import java.util.List;

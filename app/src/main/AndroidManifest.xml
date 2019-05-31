@@ -10,8 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".model.ChooseLevel"></activity>
-        <activity android:name=".presenter.UserHello" />
+        <activity android:name=".TakeTestOrLesson"></activity>
+        <activity android:name=".TestChoose" />
+        <activity android:name=".model.LessonChoose" />
+        <activity android:name=".model.TakeLesson" />
+        <activity android:name=".model.ChooseLevel" />
         <activity android:name=".presenter.SignUp" />
         <activity android:name=".presenter.MainActivity">
             <intent-filter>

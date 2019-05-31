@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.dp.english.App;
 import com.dp.english.R;
 import com.dp.english.presenter.MainActivity;
-import com.dp.english.presenter.UserHello;
+
 import com.github.barteksc.pdfviewer.PDFView;
 
 public class TakeLesson extends AppCompatActivity {
