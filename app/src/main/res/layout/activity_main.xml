@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presenter.MainActivity"
-    android:background="@drawable/mountain">
+    android:background="@drawable/fonone">
 
     <View
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:layout_width="300dp"
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="272dp"
         android:layout_marginEnd="40dp"
 
         android:inputType="textPersonName"
@@ -73,15 +73,26 @@
         app:layout_constraintTop_toBottomOf="@+id/bt_signIn" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="162dp"
-        android:layout_height="127dp"
+        android:id="@+id/imageView4"
+        android:layout_width="325dp"
+        android:layout_height="320dp"
+
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/speak_english" />
+        app:srcCompat="@drawable/bluewatercolor" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="378dp"
+        android:layout_height="263dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nameapp" />
 
 </android.support.constraint.ConstraintLayout>

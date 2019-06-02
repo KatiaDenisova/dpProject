@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dp.english.R;
+import com.dp.english.TakeTestOrLesson;
 
 public class ChooseLevel extends AppCompatActivity {
     Button takeLesson;
@@ -26,8 +27,7 @@ public class ChooseLevel extends AppCompatActivity {
         takeLesson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChooseLevel.this, LessonChoose.class));
-                finish();
+                startActivity(new Intent(ChooseLevel.this, TakeTestOrLesson.class));
             }
         });
     }
