@@ -123,7 +123,7 @@
 
     <Button
         android:id="@+id/bt_signUp"
-        android:layout_width="300dp"
+        android:layout_width="318dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
@@ -133,22 +133,22 @@
         android:textColor="#ffff"
         app:layout_constraintBottom_toTopOf="@+id/bt_Cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_Cancel"
-        android:layout_width="300dp"
+        android:layout_width="318dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/buttonred"
         android:text="@string/cancel"
         android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
