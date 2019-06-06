@@ -5,95 +5,150 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presenter.SignUp"
-    android:background="@drawable/mountain">
+    android:background="@drawable/fontwo">
+
     <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.5"
-        android:background="@drawable/gradient"/>
+        android:background="@drawable/gradient" />
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="300dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="40dp"
-
-        android:inputType="textPersonName"
-        android:text="@string/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/tv_password"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="318dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="8dp"
 
-        android:inputType="textPassword"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toTopOf="@+id/view2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_bg_shape"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                app:srcCompat="@drawable/ic_user" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_name"
+                android:layout_width="250dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="10dp"
+                android:drawablePadding="32dp"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:text="@string/name"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintStart_toStartOf="parent"
+                app:met_hideUnderline="true"
+                tools:layout_editor_absoluteY="272dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/login_bg_shape"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                app:srcCompat="@drawable/ic_email" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_email"
+                android:layout_width="250dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="10dp"
+                android:drawablePadding="32dp"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:text="@string/email"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintStart_toStartOf="parent"
+                app:met_hideUnderline="true"
+                tools:layout_editor_absoluteY="272dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/login_bg_shape"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/fl_pass_ic"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                app:srcCompat="@drawable/ic_key" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/tv_password"
+                android:layout_width="250dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="10dp"
+                android:drawablePadding="32dp"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:met_hideUnderline="true"
+                tools:layout_editor_absoluteY="326dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/bt_signUp"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/buttonyellow"
         android:text="@string/sign_up"
+        android:textColor="#ffff"
+        app:layout_constraintBottom_toTopOf="@+id/bt_Cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_password" />
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_Cancel"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/buttonred"
         android:text="@string/cancel"
+        android:textColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_signUp" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="162dp"
-        android:layout_height="127dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/speak_english" />
-
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="300dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

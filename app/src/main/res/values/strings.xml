@@ -2,9 +2,9 @@
     <string name="app_name">Learning English</string>
     <string name="email">Email</string>
     <string name="name">Name</string>
-    <string name="sign_in">Sign In</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="cancel">Cancel</string>
+    <string name="sign_in">ВОЙТИ</string>
+    <string name="sign_up">РЕГИСТРИРОВАТЬСЯ</string>
+    <string name="cancel">ВЫЙТИ</string>
     <string name="hello">Привет</string>
     <string name="choose_level">Выбрать</string>
     <string name="choose_your_level">Выбери свой уровень</string>
