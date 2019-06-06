@@ -7,8 +7,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,6 +75,16 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     showPass.setVisibility(View.GONE);
                 }
+            }
+        });
+
+        showPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                needToHidePassword = !needToHidePassword;
+                edtPassword.setInputType(needToHidePassword ? InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                edtPassword.setSelection(edtPassword.getText().length());
+                showPass.setImageResource(!needToHidePassword ? R.drawable.ic_eye : R.drawable.ic_eye_off);
             }
         });
 
