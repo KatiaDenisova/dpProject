@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.dp.english.App;
@@ -24,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
     private Button btSignUp;
     private EditText edtPassword;
     private EditText edtEmail;
-
+    private ImageView showPass;
+    private ImageView passwordIcon;
+    private boolean needToHidePassword = true;
 
     private UserDao userDao;
     private ProgressDialog progressDialog;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -44,10 +49,32 @@ public class MainActivity extends AppCompatActivity {
 
         btSignIn = findViewById(R.id.bt_signIn);
         btSignUp = findViewById(R.id.btRegister);
-
+        showPass = findViewById(R.id.fl_show_pass);
+        passwordIcon = findViewById(R.id.fl_pass_ic);
 
         edtPassword = findViewById(R.id.tv_password);
         edtEmail = findViewById(R.id.et_email);
+
+        edtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.length() > 0) {
+                    showPass.setVisibility(View.VISIBLE);
+                } else {
+                    showPass.setVisibility(View.GONE);
+                }
+            }
+        });
 
         btSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SignUp.class));
             }
         });
+
 
         btSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
