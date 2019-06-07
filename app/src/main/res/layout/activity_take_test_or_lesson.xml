@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/iv_learning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -22,7 +22,7 @@
             app:srcCompat="@drawable/learning3" />
 
         <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/iv_take_test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

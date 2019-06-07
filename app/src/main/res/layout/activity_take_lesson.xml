@@ -31,6 +31,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="0"
                 android:text="@string/understandably"
+                android:textColor="@color/colorWhiteBlue"
                 android:background="@drawable/buttonyellow"/>
         </LinearLayout>
 

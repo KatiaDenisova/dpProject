@@ -17,20 +17,25 @@ public class TakeTestOrLesson extends AppCompatActivity {
         setContentView(R.layout.activity_take_test_or_lesson);
 
         test = findViewById(R.id.iv_take_test);
-//        learnig = findViewById(R.id.iv_learning);
-//        test.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        learnig = findViewById(R.id.iv_learning);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        learnig.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(TakeTestOrLesson.this, LessonChoose.class));
-//            }
-//        });
+            }
+        });
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TakeTestOrLesson.this, TestChoose.class));
+            }
+        });
+        learnig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TakeTestOrLesson.this, LessonChoose.class));
+            }
+        });
 
     }
 
