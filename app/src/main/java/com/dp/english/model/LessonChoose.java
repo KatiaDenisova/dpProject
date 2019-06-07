@@ -83,6 +83,7 @@ public class LessonChoose extends AppCompatActivity {
                     Intent i = new Intent(LessonChoose.this, TakeLesson.class);
                     i.putExtra("lesson",  item.getId());
                     startActivity(i);
+                    finish();
 
                 }
                 else Toast.makeText(LessonChoose.this, "No lessons", Toast.LENGTH_SHORT).show();

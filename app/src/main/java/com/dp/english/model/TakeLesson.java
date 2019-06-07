@@ -33,6 +33,7 @@ public class TakeLesson extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(TakeLesson.this, LessonChoose.class );
                 startActivity(i);
+                finish();
 
             }
         });
