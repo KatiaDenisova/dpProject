@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TakeTestOrLesson"></activity>
+        <activity android:name=".TakeTest"></activity>
+        <activity android:name=".TakeTestOrLesson" />
         <activity android:name=".TestChoose" />
         <activity android:name=".model.LessonChoose" />
         <activity android:name=".model.TakeLesson" />
