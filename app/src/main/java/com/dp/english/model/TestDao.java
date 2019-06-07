@@ -13,8 +13,8 @@ public interface TestDao {
     @Query("Select * from Test")
     List<Test> getTests();
 
-    @Query("Select * from Test where nameTest = :name")
-    Test getTest(String name);
+    @Query("Select * from Test where id = :id")
+    Test getTest(int id);
 
     @Insert
     void insert(Test test);

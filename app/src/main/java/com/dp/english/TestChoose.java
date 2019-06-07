@@ -51,6 +51,7 @@ private TestsAdapter adapter;
                 Test item = adapter.getItem(position);
                 if (item!=null){
                     Intent i = new Intent(TestChoose.this, TakeTest.class);
+                    i.putExtra("test",  item.getId());
                     startActivity(i);
                 }
 
