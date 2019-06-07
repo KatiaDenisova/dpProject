@@ -1,5 +1,6 @@
 package com.dp.english;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,6 +49,10 @@ private TestsAdapter adapter;
             @Override
             public void onItemClick(View view, int position) {
                 Test item = adapter.getItem(position);
+                if (item!=null){
+                    Intent i = new Intent(TestChoose.this, TakeTest.class);
+                    startActivity(i);
+                }
 
             }
         });
