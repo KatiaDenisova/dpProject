@@ -6,10 +6,15 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface AnswerDao {
     @Query("Select * from Answer where id= :id")
     Answer getAnswer(int id);
+
+    @Query("Select * from Answer where id= :idQuestion")
+    List<Answer> getAnswersByIdQuestion(int idQuestion);
 
     @Insert
     void insert(Answer answer);

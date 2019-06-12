@@ -27,6 +27,11 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
         this.mOnItemClickListener = mOnItemClickListener;
     }
 
+    public void setData(List<Answer> answers) {
+        this.answers = answers;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public AnswerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

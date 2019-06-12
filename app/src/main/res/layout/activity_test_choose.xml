@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".TestChoose">
     <android.support.v7.widget.RecyclerView
-        android:background="@drawable/gradient"
+        android:background="@drawable/fontwo"
         android:alpha="0.8"
         android:id="@+id/rv_test_list"
         android:layout_width="match_parent"

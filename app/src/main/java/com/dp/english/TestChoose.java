@@ -7,7 +7,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.dp.english.model.Answer;
+import com.dp.english.model.AnswerDao;
 import com.dp.english.model.MyDatabase;
+import com.dp.english.model.Question;
+import com.dp.english.model.QuestionDao;
 import com.dp.english.model.Test;
 import com.dp.english.model.TestDao;
 import com.dp.english.model.adapter.TestsAdapter;
@@ -24,17 +28,37 @@ private TestsAdapter adapter;
 
         testList = findViewById(R.id.rv_test_list);
         MyDatabase db = App.getInstance().getUserDatabase();
-//    insertData();
+    insertData();
     showTests();
     }
 
     private void insertData(){
+
         MyDatabase db = App.getInstance().getUserDatabase();
         TestDao testDao = db.getTestDao();
-        Test test = new Test();
-        test.setId(2);
-        test.setNameTest("-ка");
-        testDao.insert(test);
+        QuestionDao questionDao = db.getQuestionDao();
+        AnswerDao answerDao = db.getAnswerDao();
+        if(testDao.getTests().isEmpty()){
+            Test test = new Test();
+            test.setId(2);
+            test.setNameTest("Present Simple");
+            testDao.insert(test);
+            Question question = new Question(1,"Mark *** cakes",test.getId());
+            questionDao.insert(question);
+            Answer answer = new Answer();
+            answer.setId(1);
+            answer.setQuestionId(question.getId());
+            answer.setTheAnswer("don't love");
+            answerDao.insert(answer);
+
+            Answer answer1 = new Answer();
+            answer.setId(2);
+            answer.setQuestionId(question.getId());
+            answer.setTheAnswer("doesn't love");
+            answerDao.insert(answer1);
+
+
+        }
     }
     private List<Test> getTests() {
         MyDatabase db = App.getInstance().getUserDatabase();
@@ -50,7 +74,7 @@ private TestsAdapter adapter;
             public void onItemClick(View view, int position) {
                 Test item = adapter.getItem(position);
                 if (item!=null){
-                    Intent i = new Intent(TestChoose.this, TakeTest.class);
+                    Intent i = new Intent(TestChoose.this, TakeTestActivity.class);
                     i.putExtra("test",  item.getId());
                     startActivity(i);
                 }
