@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TestPojo {
     private String testName;
-    private List<QuestionPojo> questions = null;
+    private List<QuestionPojo> questions;
 
     public TestPojo(String testName, List<QuestionPojo> questions) {
         this.testName = testName;

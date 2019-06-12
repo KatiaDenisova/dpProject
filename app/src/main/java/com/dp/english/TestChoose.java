@@ -52,11 +52,24 @@ private TestsAdapter adapter;
             answerDao.insert(answer);
 
             Answer answer1 = new Answer();
-            answer.setId(2);
-            answer.setQuestionId(question.getId());
-            answer.setTheAnswer("doesn't love");
+            answer1.setId(2);
+            answer1.setQuestionId(question.getId());
+            answer1.setTheAnswer("doesn't love");
             answerDao.insert(answer1);
 
+            Question question1 = new Question(2,"Mark *** cakes1",test.getId());
+            questionDao.insert(question1);
+            Answer answerQ1 = new Answer();
+            answerQ1.setId(3);
+            answerQ1.setQuestionId(question1.getId());
+            answerQ1.setTheAnswer("don't love2");
+            answerDao.insert(answerQ1);
+
+            Answer answer1Q1 = new Answer();
+            answer1Q1.setId(4);
+            answer1Q1.setQuestionId(question1.getId());
+            answer1Q1.setTheAnswer("doesn't love2");
+            answerDao.insert(answer1Q1);
 
         }
     }

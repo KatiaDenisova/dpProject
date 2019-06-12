@@ -83,7 +83,9 @@ public class TakeTestActivity extends AppCompatActivity {
             }
         });
         nameQuestion.setText(questionPojo.getNameQuestion());
-        adapter.setData(questionPojo.getAnswers());
+
+//        adapter.setData(questionPojo.getAnswers());
+        recyclerView.setAdapter(adapter);
     }
 
     private void endTest() {
@@ -107,7 +109,7 @@ public class TakeTestActivity extends AppCompatActivity {
         MyDatabase db = App.getInstance().getUserDatabase();
         QuestionDao questionDao = db.getQuestionDao();
         List<Question> questions = questionDao.getQuestionByIdTest(testId);
-        ArrayList<QuestionPojo> questionPojos = new ArrayList<>();
+        List<QuestionPojo> questionPojos = new ArrayList<>();
 
         for(Question question: questions) {
             questionPojos.add(getQuestion(question));

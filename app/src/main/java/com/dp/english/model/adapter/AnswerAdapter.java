@@ -22,6 +22,10 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.AnswerView
     private List<Answer> answers;
     private OnItemClickListener mOnItemClickListener;
 
+    public AnswerAdapter(List<Answer> answers) {
+        this.answers = answers;
+    }
+
     public AnswerAdapter(List<Answer> answers, OnItemClickListener mOnItemClickListener) {
         this.answers = answers;
         this.mOnItemClickListener = mOnItemClickListener;
