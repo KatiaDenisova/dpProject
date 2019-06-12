@@ -14,12 +14,13 @@ public class TestPojo {
         this.questions = questions;
     }
 
-    List<QuestionPojo> getQuestions() {
+   public List<QuestionPojo> getQuestions() {
         return questions;
     }
 
-    String getTestName() {
+   public String getTestName() {
         return testName;
     }
 
 }
+

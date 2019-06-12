@@ -26,7 +26,7 @@ import java.util.List;
 
 public class TakeTestActivity extends AppCompatActivity {
     private RecyclerView answerlist;
-    private AnswerAdapter  adapter;
+    private AnswerAdapter adapter;
     private TextView testName;
     private Test test;
     private RecyclerView recyclerView;
@@ -43,6 +43,7 @@ public class TakeTestActivity extends AppCompatActivity {
 
         int id = (int) getIntent().getSerializableExtra("test");
         presenter = new TakeTestPresenter(getTest(id));
+        List<Answer> list = presenter.getTest().getQuestions().get(1).getAnswers();
 
 
         nameQuestion = findViewById(R.id.tv_name_question);
@@ -67,7 +68,7 @@ public class TakeTestActivity extends AppCompatActivity {
 
     private void initNextQuestion() {
         QuestionPojo questionPojo = presenter.nextQuestion();
-        if(questionPojo == null) {
+        if (questionPojo == null) {
             endTest();
         } else {
             showQuestion(questionPojo);
@@ -82,6 +83,10 @@ public class TakeTestActivity extends AppCompatActivity {
 
             }
         });
+        List<Answer> list = questionPojo.getAnswers();
+        for (Answer answer: list) {
+            System.out.println(answer.toString());
+        }
         nameQuestion.setText(questionPojo.getNameQuestion());
 
 //        adapter.setData(questionPojo.getAnswers());
@@ -111,10 +116,10 @@ public class TakeTestActivity extends AppCompatActivity {
         List<Question> questions = questionDao.getQuestionByIdTest(testId);
         List<QuestionPojo> questionPojos = new ArrayList<>();
 
-        for(Question question: questions) {
+        for (Question question : questions) {
             questionPojos.add(getQuestion(question));
         }
-            return questionPojos;
+        return questionPojos;
     }
 
     private QuestionPojo getQuestion(Question question) {

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class QuestionPojo {
     private String nameQuestion;
-    private List<Answer> answers = null;
+    private List<Answer> answers;
 
     public QuestionPojo(String nameQuestion, List<Answer> answers) {
         this.nameQuestion = nameQuestion;

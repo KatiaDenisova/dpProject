@@ -22,4 +22,7 @@ public class TakeTestPresenter {
         return questionPojo;
     }
 
+    public TestPojo getTest() {
+        return test;
+    }
 }
