@@ -127,8 +127,6 @@ public class TakeTestActivity extends AppCompatActivity {
         AnswerDao answerDao = db.getAnswerDao();
         List<Answer> answers = answerDao.getAnswersByIdQuestion(question.getId());
 
-        // TODO вытяни ответы
-
         return new QuestionPojo(question.getTheQustion(), answers);
     }
 

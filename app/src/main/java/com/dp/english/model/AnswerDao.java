@@ -13,7 +13,7 @@ public interface AnswerDao {
     @Query("Select * from Answer where id= :id")
     Answer getAnswer(int id);
 
-    @Query("Select * from Answer where id= :idQuestion")
+    @Query("Select * from Answer where question_id= :idQuestion")
     List<Answer> getAnswersByIdQuestion(int idQuestion);
 
     @Insert
