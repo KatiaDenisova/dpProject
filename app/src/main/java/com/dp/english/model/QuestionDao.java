@@ -18,6 +18,7 @@ public interface QuestionDao {
     @Query("select * from Question where test_id = :idTest")
     List<Question> getQuestionByIdTest(int idTest);
 
+
     @Insert
     void insert(Question question);
 

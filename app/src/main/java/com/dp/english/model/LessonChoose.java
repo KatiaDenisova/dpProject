@@ -31,25 +31,28 @@ public class LessonChoose extends AppCompatActivity {
         MyDatabase db = App.getInstance().getUserDatabase();
         LessonDao lessonDao = db.getLessonDao();
 //        lessonDao.deleteList(lessonDao.getLessons());
-//     insertData();
+        insertData();
         showLessons();
     }
 
     private void insertData() {
         MyDatabase db = App.getInstance().getUserDatabase();
         LessonDao lessonDao = db.getLessonDao();
-        Lesson lesson = new Lesson();
-        lesson.setId(1);
-        lesson.setNameFile("ten_Rules.pdf");
-        lesson.setNameLesson("10 основных правил");
-        lesson.setLevel(Level.EASY);
-        lessonDao.insert(lesson);
-        Lesson lesson1 = new Lesson();
-        lesson1.setId(2);
-        lesson1.setNameFile("present_continuous.pdf");
-        lesson1.setNameLesson("Present Continuous");
-        lesson1.setLevel(Level.EASY);
-        lessonDao.insert(lesson1);
+        if(lessonDao.getLessons().isEmpty()){
+            Lesson lesson = new Lesson();
+            lesson.setId(1);
+            lesson.setNameFile("ten_Rules.pdf");
+            lesson.setNameLesson("10 основных правил");
+            lesson.setLevel(Level.EASY);
+            lessonDao.insert(lesson);
+            Lesson lesson1 = new Lesson();
+            lesson1.setId(2);
+            lesson1.setNameFile("present_continuous.pdf");
+            lesson1.setNameLesson("Present Continuous");
+            lesson1.setLevel(Level.EASY);
+            lessonDao.insert(lesson1);
+        }
+
 
     }
     private void delete(){

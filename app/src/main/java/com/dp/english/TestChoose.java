@@ -43,32 +43,36 @@ private TestsAdapter adapter;
             test.setId(2);
             test.setNameTest("Present Simple");
             testDao.insert(test);
-            Question question = new Question(1,"Mark *** cakes",test.getId());
+            Question question = new Question(1,"Mark__cakes",test.getId());
             questionDao.insert(question);
             Answer answer = new Answer();
             answer.setId(1);
             answer.setQuestionId(question.getId());
             answer.setTheAnswer("don't love");
+            answer.setStatus(false);
             answerDao.insert(answer);
 
             Answer answer1 = new Answer();
             answer1.setId(2);
             answer1.setQuestionId(question.getId());
             answer1.setTheAnswer("doesn't love");
+            answer1.setStatus(true);
             answerDao.insert(answer1);
 
-            Question question1 = new Question(2,"Mark *** cakes1",test.getId());
+            Question question1 = new Question(2,"Mark__cakes1",test.getId());
             questionDao.insert(question1);
             Answer answerQ1 = new Answer();
             answerQ1.setId(3);
             answerQ1.setQuestionId(question1.getId());
             answerQ1.setTheAnswer("don't love2");
+            answerQ1.setStatus(false);
             answerDao.insert(answerQ1);
 
             Answer answer1Q1 = new Answer();
             answer1Q1.setId(4);
             answer1Q1.setQuestionId(question1.getId());
             answer1Q1.setTheAnswer("doesn't love2");
+            answer1Q1.setStatus(true);
             answerDao.insert(answer1Q1);
 
         }
@@ -90,6 +94,7 @@ private TestsAdapter adapter;
                     Intent i = new Intent(TestChoose.this, TakeTestActivity.class);
                     i.putExtra("test",  item.getId());
                     startActivity(i);
+                    finish();
                 }
 
             }

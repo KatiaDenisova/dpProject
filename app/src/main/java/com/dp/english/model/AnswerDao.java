@@ -16,6 +16,9 @@ public interface AnswerDao {
     @Query("Select * from Answer where question_id= :idQuestion")
     List<Answer> getAnswersByIdQuestion(int idQuestion);
 
+    @Query("Select count(status) from Answer where question_id= :idQuestion and status =:status")
+    int getAnswersStatus(int idQuestion, boolean status);
+
     @Insert
     void insert(Answer answer);
 

@@ -35,12 +35,16 @@ public class TakeTestActivity extends AppCompatActivity {
     private Button nextBtn;
 
     private TakeTestPresenter presenter;
+    private int rightAnswerCount;
+    int userAnswerCountRignt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_test);
 
+        rightAnswerCount = 0;
+        userAnswerCountRignt = 0;
         int id = (int) getIntent().getSerializableExtra("test");
         presenter = new TakeTestPresenter(getTest(id));
         List<Answer> list = presenter.getTest().getQuestions().get(1).getAnswers();
@@ -69,7 +73,12 @@ public class TakeTestActivity extends AppCompatActivity {
     private void initNextQuestion() {
         QuestionPojo questionPojo = presenter.nextQuestion();
         if (questionPojo == null) {
-            endTest();
+            if (rightAnswerCount > userAnswerCountRignt){
+                System.out.println("тест не пройден");
+            }else {
+                System.out.println("тест пройден успешно");
+            }
+                endTest();
         } else {
             showQuestion(questionPojo);
         }
@@ -79,12 +88,26 @@ public class TakeTestActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AnswerAdapter(questionPojo.getAnswers(), new AnswerAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
+            public void onItemClick(int position, boolean isChecked) {
+                Answer item = adapter.getItem(position);
+                if (item.getStatus()) {
+                    if (isChecked == true) {
+                        userAnswerCountRignt++;
+                        System.out.println(userAnswerCountRignt);
+                        System.out.println(isChecked);
+                        System.out.println("status" + item.getStatus());
+                    } else {
+                        userAnswerCountRignt--;
+                        System.out.println(userAnswerCountRignt);
+                        System.out.println(isChecked);
+                    }
+
+                }
 
             }
         });
         List<Answer> list = questionPojo.getAnswers();
-        for (Answer answer: list) {
+        for (Answer answer : list) {
             System.out.println(answer.toString());
         }
         nameQuestion.setText(questionPojo.getNameQuestion());
@@ -96,6 +119,7 @@ public class TakeTestActivity extends AppCompatActivity {
     private void endTest() {
         Intent i = new Intent(TakeTestActivity.this, TestChoose.class);
         startActivity(i);
+        finish();
     }
 
     private Test getLesson(int id) {
@@ -126,7 +150,7 @@ public class TakeTestActivity extends AppCompatActivity {
         MyDatabase db = App.getInstance().getUserDatabase();
         AnswerDao answerDao = db.getAnswerDao();
         List<Answer> answers = answerDao.getAnswersByIdQuestion(question.getId());
-
+        rightAnswerCount += answerDao.getAnswersStatus(question.getId(), true);
         return new QuestionPojo(question.getTheQustion(), answers);
     }
 

@@ -16,6 +16,7 @@ public class Answer {
     @ColumnInfo(name = "question_id")
     private int questionId;
 
+    private boolean status;
 
     public Answer() {
     }
@@ -44,12 +45,21 @@ public class Answer {
         this.questionId = questionId;
     }
 
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Answer{" +
                 "id=" + id +
                 ", theAnswer='" + theAnswer + '\'' +
                 ", questionId=" + questionId +
+                ", status=" + status +
                 '}';
     }
 }
