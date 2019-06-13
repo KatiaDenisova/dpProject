@@ -73,12 +73,7 @@ public class TakeTestActivity extends AppCompatActivity {
     private void initNextQuestion() {
         QuestionPojo questionPojo = presenter.nextQuestion();
         if (questionPojo == null) {
-            if (rightAnswerCount > userAnswerCountRignt){
-                System.out.println("тест не пройден");
-            }else {
-                System.out.println("тест пройден успешно");
-            }
-                endTest();
+            endTest(rightAnswerCount, userAnswerCountRignt);
         } else {
             showQuestion(questionPojo);
         }
@@ -90,20 +85,17 @@ public class TakeTestActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, boolean isChecked) {
                 Answer item = adapter.getItem(position);
-                if (item.getStatus()) {
-                    if (isChecked == true) {
-                        userAnswerCountRignt++;
-                        System.out.println(userAnswerCountRignt);
-                        System.out.println(isChecked);
-                        System.out.println("status" + item.getStatus());
-                    } else {
-                        userAnswerCountRignt--;
-                        System.out.println(userAnswerCountRignt);
-                        System.out.println(isChecked);
-                    }
-
-                }
-
+                if(item.getStatus()){
+                if (isChecked == true) {
+                    userAnswerCountRignt++;
+                    System.out.println(userAnswerCountRignt);
+                    System.out.println(isChecked);
+                    System.out.println("status" + item.getStatus());
+                } else {
+                    userAnswerCountRignt--;
+                    System.out.println(userAnswerCountRignt);
+                    System.out.println(isChecked);
+                }}
             }
         });
         List<Answer> list = questionPojo.getAnswers();
@@ -116,10 +108,20 @@ public class TakeTestActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void endTest() {
-        Intent i = new Intent(TakeTestActivity.this, TestChoose.class);
-        startActivity(i);
-        finish();
+    private void endTest(int rightAnswerCount, int userAnswerCountRignt) {
+        if (rightAnswerCount > userAnswerCountRignt || rightAnswerCount < userAnswerCountRignt) {
+            System.out.println("тест не пройден");
+            Intent i = new Intent(TakeTestActivity.this, ResultTestNoRight.class);
+            startActivity(i);
+            finish();
+
+        } else {
+            System.out.println("тест пройден успешно");
+            Intent i = new Intent(TakeTestActivity.this, ResultTestRight.class);
+            startActivity(i);
+            finish();
+        }
+
     }
 
     private Test getLesson(int id) {
@@ -154,4 +156,8 @@ public class TakeTestActivity extends AppCompatActivity {
         return new QuestionPojo(question.getTheQustion(), answers);
     }
 
+    private int countPercent(int all, int part){
+        int percent = (part/100)*all;
+        return percent;
+    }
 }

@@ -43,7 +43,7 @@ private TestsAdapter adapter;
             test.setId(2);
             test.setNameTest("Present Simple");
             testDao.insert(test);
-            Question question = new Question(1,"Mark__cakes",test.getId());
+            Question question = new Question(1,"Mark ... cakes",test.getId());
             questionDao.insert(question);
             Answer answer = new Answer();
             answer.setId(1);
@@ -59,21 +59,61 @@ private TestsAdapter adapter;
             answer1.setStatus(true);
             answerDao.insert(answer1);
 
-            Question question1 = new Question(2,"Mark__cakes1",test.getId());
+            Answer answer1False = new Answer();
+            answer1False.setId(6);
+            answer1False.setQuestionId(question.getId());
+            answer1False.setTheAnswer("love");
+            answer1False.setStatus(false);
+            answerDao.insert(answer1False);
+
+            Question question1 = new Question(2,"A pianist ... the piano.",test.getId());
             questionDao.insert(question1);
             Answer answerQ1 = new Answer();
             answerQ1.setId(3);
             answerQ1.setQuestionId(question1.getId());
-            answerQ1.setTheAnswer("don't love2");
+            answerQ1.setTheAnswer("don't play");
             answerQ1.setStatus(false);
             answerDao.insert(answerQ1);
 
             Answer answer1Q1 = new Answer();
             answer1Q1.setId(4);
             answer1Q1.setQuestionId(question1.getId());
-            answer1Q1.setTheAnswer("doesn't love2");
-            answer1Q1.setStatus(true);
+            answer1Q1.setTheAnswer("play");
+            answer1Q1.setStatus(false);
             answerDao.insert(answer1Q1);
+
+            Answer answerTrue = new Answer();
+            answerTrue.setId(5);
+            answerTrue.setQuestionId(question1.getId());
+            answerTrue.setTheAnswer("plays");
+            answerTrue.setStatus(true);
+            answerDao.insert(answerTrue);
+
+            Question question3 = new Question(3,"Mary and Sue ... to the cinema.",test.getId());
+            questionDao.insert(question3);
+
+            Answer answerTrue1 = new Answer();
+            answerTrue1.setId(7);
+            answerTrue1.setQuestionId(question3.getId());
+            answerTrue1.setTheAnswer("goes");
+            answerTrue1.setStatus(false);
+            answerDao.insert(answerTrue1);
+
+            Answer answerTrue2 = new Answer();
+            answerTrue2.setId(8);
+            answerTrue2.setQuestionId(question3.getId());
+            answerTrue2.setTheAnswer("doesn't go");
+            answerTrue2.setStatus(false);
+            answerDao.insert(answerTrue2);
+
+            Answer answerTrue3 = new Answer();
+            answerTrue3.setId(9);
+            answerTrue3.setQuestionId(question3.getId());
+            answerTrue3.setTheAnswer("don't go");
+            answerTrue3.setStatus(true);
+            answerDao.insert(answerTrue3);
+
+
 
         }
     }
