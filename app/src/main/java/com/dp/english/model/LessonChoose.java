@@ -51,6 +51,12 @@ public class LessonChoose extends AppCompatActivity {
             lesson1.setNameLesson("Present Continuous");
             lesson1.setLevel(Level.EASY);
             lessonDao.insert(lesson1);
+            Lesson lesson2 = new Lesson();
+            lesson2.setId(3);
+            lesson2.setNameLesson("Present Simple");
+            lesson2.setNameFile("present_simple.pdf");
+            lesson2.setLevel(Level.EASY);
+            lessonDao.insert(lesson2);
         }
 
 
