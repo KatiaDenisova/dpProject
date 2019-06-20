@@ -37,6 +37,9 @@ public class TakeTestActivity extends AppCompatActivity {
     private TakeTestPresenter presenter;
     private int rightAnswerCount;
     int userAnswerCountRignt;
+    int userAnswerCountNoRight;
+    private int countRight;
+    private int countNoRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class TakeTestActivity extends AppCompatActivity {
 
         rightAnswerCount = 0;
         userAnswerCountRignt = 0;
+        userAnswerCountNoRight = 0;
         int id = (int) getIntent().getSerializableExtra("test");
         presenter = new TakeTestPresenter(getTest(id));
         List<Answer> list = presenter.getTest().getQuestions().get(1).getAnswers();
@@ -73,50 +77,58 @@ public class TakeTestActivity extends AppCompatActivity {
     private void initNextQuestion() {
         QuestionPojo questionPojo = presenter.nextQuestion();
         if (questionPojo == null) {
-            endTest(rightAnswerCount, userAnswerCountRignt);
+            endTest();
         } else {
             showQuestion(questionPojo);
         }
     }
 
-    private void showQuestion(QuestionPojo questionPojo) {
+    private void showQuestion(final QuestionPojo questionPojo) {
+        MyDatabase db = App.getInstance().getUserDatabase();
+        AnswerDao answerDao = db.getAnswerDao();
+        final int contRightInQuestion = answerDao.getAnswersStatus(questionPojo.getIdQuestion(), true);
+        countRight = 0;
+        countNoRight = 0;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AnswerAdapter(questionPojo.getAnswers(), new AnswerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, boolean isChecked) {
                 Answer item = adapter.getItem(position);
-                if(item.getStatus()){
-                if (isChecked == true) {
-                    userAnswerCountRignt++;
-                    System.out.println(userAnswerCountRignt);
-                    System.out.println(isChecked);
-                    System.out.println("status" + item.getStatus());
+
+                if (item.getStatus()) {
+                    if (isChecked == true) {
+                        countRight++;
+                    } else {
+                        countRight--;
+                    }
                 } else {
-                    userAnswerCountRignt--;
-                    System.out.println(userAnswerCountRignt);
-                    System.out.println(isChecked);
-                }}
+                    if (isChecked == true) {
+                        countNoRight++;
+                    } else {
+                        countNoRight--;
+                    }
+                }
+                if (countRight == contRightInQuestion) {
+                    userAnswerCountRignt++;
+                }
             }
         });
+
         List<Answer> list = questionPojo.getAnswers();
         for (Answer answer : list) {
             System.out.println(answer.toString());
         }
         nameQuestion.setText(questionPojo.getNameQuestion());
-
-//        adapter.setData(questionPojo.getAnswers());
         recyclerView.setAdapter(adapter);
     }
 
-    private void endTest(int rightAnswerCount, int userAnswerCountRignt) {
-        if (rightAnswerCount > userAnswerCountRignt || rightAnswerCount < userAnswerCountRignt) {
-            System.out.println("тест не пройден");
+    private void endTest() {
+        if (countPercent() < 100) {
             Intent i = new Intent(TakeTestActivity.this, ResultTestNoRight.class);
+            i.putExtra("percent", countPercent());
             startActivity(i);
             finish();
-
         } else {
-            System.out.println("тест пройден успешно");
             Intent i = new Intent(TakeTestActivity.this, ResultTestRight.class);
             startActivity(i);
             finish();
@@ -152,12 +164,18 @@ public class TakeTestActivity extends AppCompatActivity {
         MyDatabase db = App.getInstance().getUserDatabase();
         AnswerDao answerDao = db.getAnswerDao();
         List<Answer> answers = answerDao.getAnswersByIdQuestion(question.getId());
-        rightAnswerCount += answerDao.getAnswersStatus(question.getId(), true);
-        return new QuestionPojo(question.getTheQustion(), answers);
+        return new QuestionPojo(question.getTheQustion(), answers, question.getId());
     }
 
-    private int countPercent(int all, int part){
-        int percent = (part/100)*all;
-        return percent;
+
+    private int countQuestionInTest(int testId) {
+        MyDatabase db = App.getInstance().getUserDatabase();
+        QuestionDao questionDao = db.getQuestionDao();
+        List<Question> questions = questionDao.getQuestionByIdTest(testId);
+        return questions.size();
+    }
+
+    private int countPercent() {
+        return (userAnswerCountRignt * 100) / countQuestionInTest(test.getId());
     }
 }

@@ -11,10 +11,11 @@ import com.dp.english.model.convert.ConvertLevel;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
+@Root
 
 @TypeConverters(ConvertLevel.class)
 @Entity
-@Root
+
 public class Lesson {
     @PrimaryKey
     @Element

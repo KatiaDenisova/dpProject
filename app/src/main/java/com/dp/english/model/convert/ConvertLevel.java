@@ -5,6 +5,7 @@ import android.arch.persistence.room.TypeConverter;
 import com.dp.english.model.Level;
 
 public class ConvertLevel {
+
     @TypeConverter
     public String fromLevel(Level level) {
         return level.name();
@@ -20,3 +21,4 @@ public class ConvertLevel {
         return null;
     }
 }
+
