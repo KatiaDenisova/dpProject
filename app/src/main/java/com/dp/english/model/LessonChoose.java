@@ -39,6 +39,13 @@ public class LessonChoose extends AppCompatActivity {
         MyDatabase db = App.getInstance().getUserDatabase();
         LessonDao lessonDao = db.getLessonDao();
         if(lessonDao.getLessons().isEmpty()){
+            Lesson lesson4 = new Lesson();
+            lesson4.setId(5);
+            lesson4.setNameLesson("Фразы для собеседования");
+            lesson4.setNameFile("for_interview.pdf");
+            lesson4.setLevel(Level.EASY);
+            lessonDao.insert(lesson4);
+
             Lesson lesson = new Lesson();
             lesson.setId(1);
             lesson.setNameFile("ten_Rules.pdf");
@@ -57,6 +64,14 @@ public class LessonChoose extends AppCompatActivity {
             lesson2.setNameFile("present_simple.pdf");
             lesson2.setLevel(Level.EASY);
             lessonDao.insert(lesson2);
+
+            Lesson lesson3 = new Lesson();
+            lesson3.setId(4);
+            lesson3.setNameLesson("Past Simple");
+            lesson3.setNameFile("past_simple.pdf");
+            lesson3.setLevel(Level.EASY);
+            lessonDao.insert(lesson3);
+
         }
 
 

@@ -114,6 +114,42 @@ private TestsAdapter adapter;
             answerDao.insert(answerTrue3);
 
 
+            Question question4 = new Question(4,"... she learn Russian?",test.getId());
+            questionDao.insert(question4);
+            Answer answerTrue4 = new Answer();
+            answerTrue4.setId(10);
+            answerTrue4.setQuestionId(question4.getId());
+            answerTrue4.setTheAnswer("Does");
+            answerTrue4.setStatus(true);
+            answerDao.insert(answerTrue4);
+
+            Answer answerFalse4 = new Answer();
+            answerFalse4.setId(11);
+            answerFalse4.setQuestionId(question4.getId());
+            answerFalse4.setTheAnswer("Do");
+            answerFalse4.setStatus(false);
+            answerDao.insert(answerFalse4);
+
+            Answer answerFalse41 = new Answer();
+            answerFalse41.setId(12);
+            answerFalse41.setQuestionId(question4.getId());
+            answerFalse41.setTheAnswer("Is");
+            answerFalse41.setStatus(false);
+            answerDao.insert(answerFalse41);
+
+            Answer answerFalse42 = new Answer();
+            answerFalse42.setId(13);
+            answerFalse42.setQuestionId(question4.getId());
+            answerFalse42.setTheAnswer("Are");
+            answerFalse42.setStatus(false);
+            answerDao.insert(answerFalse42);
+
+            Answer answerFalse43 = new Answer();
+            answerFalse43.setId(14);
+            answerFalse43.setQuestionId(question4.getId());
+            answerFalse43.setTheAnswer("**");
+            answerFalse43.setStatus(false);
+            answerDao.insert(answerFalse43);
 
         }
     }

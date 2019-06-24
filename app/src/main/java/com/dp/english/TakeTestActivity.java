@@ -52,7 +52,8 @@ public class TakeTestActivity extends AppCompatActivity {
         int id = (int) getIntent().getSerializableExtra("test");
         presenter = new TakeTestPresenter(getTest(id));
         List<Answer> list = presenter.getTest().getQuestions().get(1).getAnswers();
-
+        countRight = 0;
+        countNoRight = 0;
 
         nameQuestion = findViewById(R.id.tv_name_question);
         nextBtn = findViewById(R.id.btn_next);
@@ -98,23 +99,32 @@ public class TakeTestActivity extends AppCompatActivity {
                 if (item.getStatus()) {
                     if (isChecked == true) {
                         countRight++;
+                        System.out.println(countRight+"Внутри вопроса верные");
+                        System.out.println(isChecked);
+                        System.out.println("status" + item.getStatus());
                     } else {
                         countRight--;
+                        System.out.println(countRight);
+                        System.out.println(isChecked);
                     }
                 } else {
                     if (isChecked == true) {
                         countNoRight++;
+                        System.out.println(countNoRight);
+                        System.out.println(isChecked);
+                        System.out.println("status" + item.getStatus());
                     } else {
                         countNoRight--;
                     }
                 }
-                if (countRight == contRightInQuestion) {
-                    if( countNoRight == 0){
-                        userAnswerCountRignt++;
-                    }
+                if (countRight == contRightInQuestion && countNoRight == 0) {
+                    userAnswerCountRignt++;
+                    System.out.println(userAnswerCountRignt+ " ВНУТРИ ЦИКЛА ВЕРНЫЕ");
                 }
             }
+
         });
+
 
         List<Answer> list = questionPojo.getAnswers();
         for (Answer answer : list) {
