@@ -109,7 +109,9 @@ public class TakeTestActivity extends AppCompatActivity {
                     }
                 }
                 if (countRight == contRightInQuestion) {
-                    userAnswerCountRignt++;
+                    if( countNoRight == 0){
+                        userAnswerCountRignt++;
+                    }
                 }
             }
         });
